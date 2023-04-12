@@ -52,11 +52,12 @@ val cookies = listOf(
 
 fun main() {
 
-    // applies code inside {} to each item in list
+    // forEach applies code inside {} to each item in list
     // cookies.forEach {
     //     println("Menu item: ${it.name}")
     // }
 
+    // map lets you transform a collection into a new collection with the same number of elements
     // val fullMenu = cookies.map {
     //     "${it.name} - $${it.price}"
     // }
@@ -66,12 +67,31 @@ fun main() {
     //     println(it)
     // }
 
-    val softBakedMenu = cookies.filter {
-        it.softBaked
-    }
+    // filter lets you create a subset of a collection
+    // val softBakedMenu = cookies.filter {
+    //     it.softBaked
+    // }
+
+    // println("Soft cookies:")
+    // softBakedMenu.forEach {
+    //     println("${it.name} - $${it.price}")
+    // }
+
+    // groupBy() function can be used to turn a list into a map, based on a function.
+    val groupedMenu = cookies.groupBy { it.softBaked }
+    val softBakedMenu = groupedMenu[true] ?: listOf()
+    val crunchyMenu = groupedMenu[false] ?: listOf()
 
     println("Soft cookies:")
     softBakedMenu.forEach {
         println("${it.name} - $${it.price}")
     }
+
+    println()
+
+    println("Crunchy cookies:")
+    crunchyMenu.forEach {
+        println("${it.name} - $${it.price}")
+    }
+
 }
