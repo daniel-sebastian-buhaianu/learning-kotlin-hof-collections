@@ -96,8 +96,16 @@ fun main() {
 
     // fold() function is used to generate a single value from a collection
     // calculate total price of cookies 
-    val totalPrice = cookies.fold(0.0) {total, cookie ->
-        total + cookie.price
+    // val totalPrice = cookies.fold(0.0) {total, cookie ->
+    //     total + cookie.price
+    // }
+    // println("total price: $${totalPrice}")
+
+    // sortedBy() lets you specify a lambda that returns the property you'd like to sort by. 
+    // For example, if you'd like to sort by price, the lambda would return it.price
+    val alphabeticalMenu = cookies.sortedBy { it.name }
+    println("Alphabetical menu:\n")
+    alphabeticalMenu.forEach {
+        println("${it.name}")
     }
-    println("total price: $${totalPrice}")
 }
